@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_buscar"
+        android:icon="@drawable/ic_buscar_white"
+        android:title="Buscar"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"/>
+    <item android:id="@+id/action_atualizar"
+        android:icon="@drawable/ic_atualizar_white"
+        android:title="Atualizar"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_config"
+        android:title="Configurações"
+        app:showAsAction="never" />
+</menu>
+
