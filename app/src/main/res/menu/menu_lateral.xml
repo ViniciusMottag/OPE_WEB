@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/nav_agendamento" android:title="Agendamento"
+            android:icon="@drawable/ic_adicionar_black" />
+
+        <item android:id="@+id/nav_buscar_agendamento" android:title="Consultar agendamento"
+            android:icon="@drawable/ic_buscar_black" />
+
+    </group>
+</menu>
