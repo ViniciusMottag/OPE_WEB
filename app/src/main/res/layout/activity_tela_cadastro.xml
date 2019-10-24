@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/nomeCliente"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/textView"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nome"
+        />
+
+    <EditText
+        android:id="@+id/horario"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Teste" />
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Horario"
+         />
+
+    <EditText
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Data"
+         />
     <Button
         android:id="@+id/botao_voltar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="Voltar" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/salvarAgendamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar" />
 
+
+</LinearLayout>
