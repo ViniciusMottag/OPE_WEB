@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 
 open class DebugActivity : AppCompatActivity() {
-    private val TAG = "ope_esmalteria"
+    private val TAG = "OPE_Esmalteria"
     private val className:String
         get() {
             val s = javaClass.name

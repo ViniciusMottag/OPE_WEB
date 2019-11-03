@@ -18,6 +18,9 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class TelaInicialActivity : DebugActivity(),NavigationView.OnNavigationItemSelectedListener {
     private val context: Context get() = this
+    private var agendamento = listOf<Agendamento>()
+    private var REQUEST_CADASTRO=1
+    private var REQUEST_REMOVE=2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +29,39 @@ class TelaInicialActivity : DebugActivity(),NavigationView.OnNavigationItemSelec
         botao_Sair.setOnClickListener {cliqueSair()}
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         configuraMenuLateral()
+
+        recyclerAgendamento?.layoutManager = LinearLayoutManager(context)
+        recyclerAgendamento?.itemAnimator = DefaultItemAnimator()
+        recyclerAgendamento?.setHasFixedSize(true)
     }
+    override fun onResume() {
+        super.onResume()
+        // task para recuperar as disciplinas
+        taskAgendamento()
+    }
+    fun taskAgendamento() {
+        // Criar a Thread
+
+        Thread {
+            // Código para procurar as disciplinas
+            // que será executado em segundo plano / Thread separada
+            this.agendamento = AgendamentoService.getAgendamento(context)
+            runOnUiThread {
+                // Código para atualizar a UI com a lista de disciplinas
+                recyclerAgendamento?.adapter = AgendamentoAdapter(this.agendamento) { onClickAgendamento(it) }
+            }
+        }.start()
+
+    }
+    // tratamento do evento de clicar em uma disciplina
+    fun onClickAgendamento(agendamento: Agendamento) {
+        Toast.makeText(context, "Clicou agendamento ${agendamento.nome}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, AgendamentoActivity::class.java)
+//        intent. putExtra("agendamento", agendamento)
+        startActivityForResult(intent, REQUEST_REMOVE)
+    }
+
+
 
     // configuração do navigation Drawer com a toolbar
     private fun configuraMenuLateral() {
@@ -37,6 +72,7 @@ class TelaInicialActivity : DebugActivity(),NavigationView.OnNavigationItemSelec
         toogle.syncState()
 
         menu_lateral.setNavigationItemSelectedListener(this)
+
     }
 
     // método que deve ser implementado quando a activity implementa a interface NavigationView.OnNavigationItemSelectedListener
@@ -103,6 +139,13 @@ class TelaInicialActivity : DebugActivity(),NavigationView.OnNavigationItemSelec
             finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+    // esperar o retorno do cadastro da disciplina
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+            // atualizar lista de disciplinas
+            taskAgendamento()
+        }
     }
 
 

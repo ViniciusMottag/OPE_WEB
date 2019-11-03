@@ -32,12 +32,32 @@
                     android:id="@+id/mensagemInicial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Bem vindo" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- Colocar cardview com as disciplinas-->
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerAgendamento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cacheColorHint="@android:color/transparent"
+                        android:clipToPadding="false"
+                        android:divider="@null"
+                        android:dividerHeight="0dp"
+                        android:listSelector="@android:color/transparent"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:scrollbars="vertical">
+                    </android.support.v7.widget.RecyclerView>
+
+                </ScrollView>
 
                 <Button
                     android:id="@+id/botao_Sair"
                     android:layout_width="match_parent"
-                    android:layout_height="1000dp"
+                    android:layout_height="50dp"
                     android:text="Sair" />
             </LinearLayout>
         </ScrollView>
