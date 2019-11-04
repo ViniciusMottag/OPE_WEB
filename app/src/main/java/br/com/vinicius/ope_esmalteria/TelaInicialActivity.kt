@@ -52,7 +52,19 @@ class TelaInicialActivity : DebugActivity(),NavigationView.OnNavigationItemSelec
             }
         }.start()
 
+
     }
+    fun enviaNotificacao(agendamento: Agendamento) {
+        // Intent para abrir tela quando clicar na notificação
+        val intent = Intent(this, AgendamentoActivity::class.java)
+        // parâmetros extras
+        intent.putExtra("agendamento", agendamento)
+        // Disparar notificação
+        NotificationUtil.create(this, 1, intent, "OPE", "Você tem nova atividade na ${agendamento.nome}")
+    }
+
+
+
     // tratamento do evento de clicar em uma disciplina
     fun onClickAgendamento(agendamento: Agendamento) {
         Toast.makeText(context, "Clicou agendamento ${agendamento.nome}", Toast.LENGTH_SHORT).show()
