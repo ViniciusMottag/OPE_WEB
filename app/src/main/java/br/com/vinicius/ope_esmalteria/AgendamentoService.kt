@@ -12,12 +12,19 @@ object AgendamentoService {
     val TAG = "WS_OPE_Esmalteria"
 
     fun getAgendamento (context: Context): List<Agendamento> {
+        var agendamento=ArrayList<Agendamento>()
         if (AndroidUtils.isInternetDisponivel(context)) {
             val url = "$host/agendamento"
             val json = HttpHelper.get(url)
             return parserJson(json)
+            for (a in agendamento){
+                saveOffline(a)
+            }
+            return agendamento
         } else {
-            return ArrayList<Agendamento>()
+            val dao= DatabaseManager.getAgendamentoDAO()
+            val agendamento = dao.findAll()
+            return agendamento
         }
     }
 
@@ -26,12 +33,34 @@ object AgendamentoService {
         return parserJson(json)
     }
 
-    fun delete(agendamento: Agendamento): Response {
-        Log.d(TAG, agendamento.id.toString())
-        val url = "$host/agendamento/${agendamento.id}"
-        val json = HttpHelper.delete(url)
-        Log.d(TAG, json)
-        return parserJson(json)
+    fun delete(agendamento: Agendamento): br.com.vinicius.ope_esmalteria.Response {
+        if (AndroidUtils.isInternetDisponivel(OPEApplication.getInstance().applicationContext)){
+            val url = "$host/agendamento/${agendamento.id}"
+            val json = HttpHelper.delete(url)
+            return parserJson(json)
+        } else{
+            val dao = DatabaseManager.getAgendamentoDAO()
+            dao.delete(agendamento)
+            return Response(status = "OK", msg = "Dados salvos localmente")
+
+        }
+//        Log.d(TAG, agendamento.id.toString())
+//        val url = "$host/agendamento/${agendamento.id}"
+//        val json = HttpHelper.delete(url)
+//        Log.d(TAG, json)
+//        return parserJson(json)
+    }
+    fun saveOffline(agendamento: Agendamento) : Boolean {
+        val dao = DatabaseManager.getAgendamentoDAO()
+        if (! existeDisciplina(agendamento)) {
+            dao.insert(agendamento)
+        }
+        return true
+    }
+    fun existeDisciplina(agendamento: Agendamento): Boolean {
+        val dao = DatabaseManager.getAgendamentoDAO()
+        return dao.getById(agendamento.id) != null
+
     }
 
     inline fun <reified T> parserJson(json: String): T {

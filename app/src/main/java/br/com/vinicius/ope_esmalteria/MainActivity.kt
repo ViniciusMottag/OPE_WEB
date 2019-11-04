@@ -24,6 +24,16 @@ class MainActivity  : DebugActivity() {
                  Toast.LENGTH_SHORT).show()
              var intent = Intent(this,TelaInicialActivity::class.java)
              return startActivity(intent)
+             var lembrar = Prefs.getBoolean("lembrar")
+             if (lembrar) {
+                 var lembrarNome  = Prefs.getString("lembrarNome")
+                 var lembrarSenha  = Prefs.getString("lembrarSenha")
+                 campo_usuario.setText(lembrarNome)
+                 campo_senha.setText(lembrarSenha)
+                 checkLembrar.isChecked = lembrar
+
+             }
+
          }
          else{
              Toast.makeText(this,"Usuário ou senha incorretos",

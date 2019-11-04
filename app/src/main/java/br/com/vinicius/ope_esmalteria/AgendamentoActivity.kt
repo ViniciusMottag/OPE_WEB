@@ -18,7 +18,7 @@ class AgendamentoActivity:DebugActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agendamento)
 
-        // recuperar onjeto de Disciplina da Intent
+        // recuperar onjeto de Agendamento da Intent
         agendamento = intent.getSerializableExtra("agendamento") as Agendamento
 
         // configurar título com nome da Disciplina e botão de voltar da Toobar

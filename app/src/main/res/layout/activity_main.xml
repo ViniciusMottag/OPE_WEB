@@ -25,6 +25,12 @@
             android:text="Senha"
             android:ems="10"
             android:id="@+id/campo_senha"/>
+    <CheckBox
+        android:id="@+id/checkLembrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lembrar login"
+        />
     <ImageView
         android:id="@+id/campo_imagem"
         android:layout_width="match_parent"

@@ -1,9 +1,14 @@
 package br.com.vinicius.ope_esmalteria
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.GsonBuilder
+import java.io.Serializable
 
-class Agendamento {
+@Entity(tableName = "agendamento")
+class Agendamento:Serializable {
 
+    @PrimaryKey
     var id:Long=0
     var nome = ""
     var data = ""
