@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "120798764337",
+    "firebase_url": "https://opeesmalteria.firebaseio.com",
+    "project_id": "opeesmalteria",
+    "storage_bucket": "opeesmalteria.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120798764337:android:5a06833bef8c77bd0fa410",
+        "android_client_info": {
+          "package_name": "br.com.vinicius.ope_esmalteria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120798764337-6unke3k2crdk1kikgbecn4e7n3kn4mf2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBShvYw4gEYaatw5Ju6zpByQIxCPx7sTWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120798764337-6unke3k2crdk1kikgbecn4e7n3kn4mf2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
