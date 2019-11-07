@@ -21,9 +21,9 @@ class AgendamentoActivity:DebugActivity() {
         // recuperar onjeto de Agendamento da Intent
         agendamento = intent.getSerializableExtra("agendamento") as Agendamento
 
-        // configurar título com nome da Disciplina e botão de voltar da Toobar
+        // configurar título com nome da Agendamento e botão de voltar da Toobar
         // colocar toolbar
-        setSupportActionBar(toolbar)
+        //setSupportActionBar(toolbar)
 
         // alterar título da ActionBar
         supportActionBar?.title = agendamento?.nome
@@ -67,12 +67,27 @@ class AgendamentoActivity:DebugActivity() {
                         dialog, which -> dialog.dismiss()
                 }.create().show()
         }
+        if (id == R.id.action_adicionar){
+            AlertDialog.Builder(this)
+                .setTitle(R.string.app_name)
+                .setMessage("Deseja Adicionar um agendamento?")
+                .setPositiveButton("Sim") {
+                        dialog, which ->
+                    dialog.dismiss()
+                    taskExcluir()
+                }.setNegativeButton("Não") {
+                        dialog, which -> dialog.dismiss()
+                }.create().show()
+
+        }
         // botão up navigation
         else if (id == android.R.id.home) {
             finish()
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
     private fun taskExcluir() {
         if (this.agendamento != null && this.agendamento is Agendamento) {

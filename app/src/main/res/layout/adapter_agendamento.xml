@@ -24,7 +24,29 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:text="Nome: "/>
+
+        <TextView
+            android:id="@+id/cardHorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:text="Horario: "
+            />
+
+        <TextView
+            android:id="@+id/cardData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:text="Data: "
+            />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

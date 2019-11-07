@@ -5,4 +5,8 @@
     <item android:id="@+id/action_remover"
         android:title="Remover"
         app:showAsAction="never" />
+
+    <item android:id="@+id/action_adicionar"
+        android:title="Adicionar"
+        app:showAsAction="never" />
 </menu>

@@ -18,12 +18,16 @@ class AgendamentoAdapter (
     // ViewHolder com os elemetos da tela
     class AgendamentoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cardNome: TextView
+        val cardHorario: TextView
+        val cardData: TextView
         val cardImg: ImageView
         var cardProgress: ProgressBar
         var cardView: CardView
 
         init {
             cardNome = view.findViewById<TextView>(R.id.cardNome)
+            cardHorario=view.findViewById<TextView>(R.id.cardHorario)
+            cardData=view.findViewById<TextView>(R.id.cardData)
             cardImg = view.findViewById<ImageView>(R.id.cardImg)
             cardProgress = view.findViewById<ProgressBar>(R.id.cardProgress)
             cardView = view.findViewById<CardView>(R.id.card_agendamento)
@@ -59,6 +63,8 @@ class AgendamentoAdapter (
         // atualizar dados de disciplina
 
         holder.cardNome.text = agendamento.nome
+        holder.cardHorario.text=agendamento.horario
+        holder.cardData.text=agendamento.data
         holder.cardProgress.visibility = View.VISIBLE
 
         // download da imagem

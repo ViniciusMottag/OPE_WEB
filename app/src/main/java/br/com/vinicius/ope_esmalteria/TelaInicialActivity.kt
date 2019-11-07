@@ -69,7 +69,7 @@ class TelaInicialActivity : DebugActivity(),NavigationView.OnNavigationItemSelec
     fun onClickAgendamento(agendamento: Agendamento) {
         Toast.makeText(context, "Clicou agendamento ${agendamento.nome}", Toast.LENGTH_SHORT).show()
         val intent = Intent(context, AgendamentoActivity::class.java)
-//        intent. putExtra("agendamento", agendamento)
+        intent. putExtra("agendamento", agendamento)
         startActivityForResult(intent, REQUEST_REMOVE)
     }
 
@@ -92,11 +92,8 @@ class TelaInicialActivity : DebugActivity(),NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_agendamento -> {
-                Toast.makeText(this, "Clicou Disciplinas", Toast.LENGTH_SHORT).show()
-            }
+                Toast.makeText(this, "Clicou no agendamento", Toast.LENGTH_SHORT).show()
 
-            R.id.nav_buscar_agendamento -> {
-                Toast.makeText(this, "Clicou Mensagens", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -108,7 +105,7 @@ class TelaInicialActivity : DebugActivity(),NavigationView.OnNavigationItemSelec
 
     fun cliqueSair() {
         val returnIntent = Intent();
-        returnIntent.putExtra("result","Saída do BrewerApp");
+        returnIntent.putExtra("result","Saída do app");
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
     }
@@ -143,6 +140,7 @@ class TelaInicialActivity : DebugActivity(),NavigationView.OnNavigationItemSelec
             Toast.makeText(context, "Botão de buscar", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_atualizar) {
             Toast.makeText(context, "Botão de atualizar", Toast.LENGTH_LONG).show()
+            onResume()
         } else if (id == R.id.action_config) {
             Toast.makeText(context, "Botão de configuracoes", Toast.LENGTH_LONG).show()
         }
